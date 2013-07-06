@@ -1,0 +1,12 @@
+84 0f 1e 00; ldr r[0] = mem[1e]
+88 00; clc
+8e 0f 0c 00; call c
+90 00; hlt
+11 11; c| r[1] = r[1]-r[1] 
+89 00; stc
+10 01; r[0] = r[0] - r[1] - c(1)
+87 00; out r[0]
+81 0f 04 00; jz END
+8e 0f 0c 00; call c
+8f 00; ret END
+ff 2f

@@ -1,0 +1,27 @@
+86 00; in r[0]
+8e 0f 0a 00; call A
+87 00; out r[0]
+90 00; hlt;
+20 0f 02 00; cmp r[0] 2 ---- A: racuna fib od r[0] - ulaz i r[0] isto koristi za izlaz
+82 0f 08 00;jgt ; 
+10 00; r[0] = r[0] - r[0] ---- if r[0] < 2 
+00 0f 01 00; r[0] = r[0] + 1
+8f 00; ret; 
+8d 10; movfsp -> r[1] = SP -- else
+11 1f 02 00; r[1] = r[1] - 2
+8c 01; movtsp -> SP = r[1]
+10 0f 01 00; r[0] = r[0] - 1
+85 10 00 00; m[r[1]] = r[0]
+8e 0f 0a 00; call A
+8d 10; movfsp -> r[1] = SP
+83 20; r[2] = r[0];
+84 01 00 00; r[0] = m[r[1]]
+10 0f 01 00; r[0] = r[0] - 1
+85 12 00 00; m[r[1]] = r[2]
+8e 0f 0a 00; call A
+8d 10; movfsp -> r[1] = SP
+84 21 00 00; r[2] = m[r[1]]
+00 02; r[0] = r[0] + r[2]
+01 1f 02 00; r[1] = r[1] + 2
+8c 01; movtsp -> SP = r[1]
+8f 00; ret

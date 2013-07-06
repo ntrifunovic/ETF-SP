@@ -1,0 +1,6 @@
+8e 0f 06 00; call 6
+90 00; hlt
+86 00; 6 in r[0]
+81 0f 04 00;jz END
+8e 0f 06 00; call 6
+8f 00; ret END
